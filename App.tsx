@@ -1,17 +1,13 @@
 import './global.css';
 
 import { StatusBar } from 'expo-status-bar';
-import { View, SafeAreaView, Alert, Text, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import CurvedScrollBar from './components/CurvedScrollBar';
 
 export default function App() {
   const [scrollBarColor, setScrollBarColor] = useState('#f6a53b'); // Orange by default
   const [showRail, setShowRail] = useState(true);
-
-  const handleVerify = (code: string) => {
-    Alert.alert('Code verified', `Your code ${code} has been verified successfully!`);
-  };
 
   const changeColor = () => {
     // Toggle between orange and red

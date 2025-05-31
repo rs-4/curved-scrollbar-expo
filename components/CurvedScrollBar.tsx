@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { View, Dimensions, ScrollView, LayoutChangeEvent } from 'react-native';
-import Svg, { Path, Mask, Ellipse, Defs } from 'react-native-svg';
+import { View, ScrollView, LayoutChangeEvent } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   useAnimatedProps,
-  interpolate,
-  Extrapolate,
   withSpring,
 } from 'react-native-reanimated';
 
@@ -19,7 +17,6 @@ interface CurvedScrollBarProps {
 }
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
-const AnimatedEllipse = Animated.createAnimatedComponent(Ellipse);
 
 const CurvedScrollBar: React.FC<CurvedScrollBarProps> = ({
   children,

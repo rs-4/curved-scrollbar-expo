@@ -265,5 +265,4 @@ MIT License - feel free to use in your projects!
 
 ---
 
-Built with ❤️ using React Native Reanimated, SVG, and modern animation techniques #   c u r v e d - s c r o l l b a r - e x p o  
- 
+Built with ❤️ using React Native Reanimated, SVG, and modern animation techniques
