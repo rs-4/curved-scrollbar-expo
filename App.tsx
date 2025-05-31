@@ -1,7 +1,7 @@
 import './global.css';
 
 import { StatusBar } from 'expo-status-bar';
-import { View, SafeAreaView, Text, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView, Text, TouchableOpacity, Platform } from 'react-native';
 import { useState } from 'react';
 import CurvedScrollBar from './components/CurvedScrollBar';
 
@@ -36,7 +36,7 @@ export default function App() {
           <View className="mb-8 flex-row gap-3">
             <TouchableOpacity
               onPress={changeColor}
-              className="flex-1 rounded-2xl border border-gray-700 bg-gray-800/50 px-6 py-4 backdrop-blur-sm">
+              className="flex-1 rounded-2xl border border-gray-700 bg-gray-800/50 px-6 py-4">
               <Text className="mb-1 text-center font-semibold text-white">Color</Text>
               <Text className="text-center text-sm text-gray-400">
                 {scrollBarColor === '#f6a53b' ? 'Orange' : 'Red'}
@@ -45,7 +45,7 @@ export default function App() {
 
             <TouchableOpacity
               onPress={toggleRail}
-              className="flex-1 rounded-2xl border border-gray-700 bg-gray-800/50 px-6 py-4 backdrop-blur-sm">
+              className="flex-1 rounded-2xl border border-gray-700 bg-gray-800/50 px-6 py-4">
               <Text className="mb-1 text-center font-semibold text-white">Rail</Text>
               <Text className="text-center text-sm text-gray-400">
                 {showRail ? 'Enabled' : 'Disabled'}
@@ -67,12 +67,23 @@ export default function App() {
             {/* Content Cards */}
             <View className="flex-1 gap-4">
               {Array.from({ length: 20 }, (_, i) => (
-                <View
-                  key={i}
-                  className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6 backdrop-blur-sm">
+                <View key={i} className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
                   <View className="mb-3 flex-row items-center justify-between">
                     <Text className="text-lg font-semibold text-white">Article {i + 1}</Text>
-                    <View className="h-2 w-2 animate-pulse rounded-full bg-orange-500 shadow-lg shadow-orange-500/50"></View>
+                    <View
+                      className="h-2 w-2 animate-pulse rounded-full bg-orange-500"
+                      style={[
+                        Platform.select({
+                          ios: {
+                            shadowColor: '#f97316',
+                            shadowOffset: { width: 0, height: 0 },
+                            shadowOpacity: 0.8,
+                            shadowRadius: 8,
+                          },
+                          default: {}, // web aussi
+                        }),
+                        Platform.OS === 'android' && { elevation: 8 },
+                      ]}></View>
                   </View>
                   <Text className="leading-relaxed text-gray-400">
                     Discover how this scrollbar perfectly follows the path along screen edges with
